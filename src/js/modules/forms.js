@@ -1,15 +1,12 @@
-import { post } from "jquery";
+import checkNumInputs from './checkNumInputs';
+import {modalClose} from './modals';
 
-const forms = () => {
+
+const forms = (state) => {
     const form = document.querySelectorAll('form'),
-          inputs = document.querySelectorAll('input'),
-          phoneInputs = document.querySelectorAll('input[name="user_phone"]');
-          
-    phoneInputs.forEach(item => {
-        item.addEventListener('input', () => {
-            item.value = item.value.replace(/\D/, '');
-        });
-    });
+          inputs = document.querySelectorAll('input');
+
+    checkNumInputs('input[name="user_phone"]');
 
     const message = {
         loading: 'Загрузка...',
@@ -40,7 +37,14 @@ const forms = () => {
             item.appendChild(statusMessage);
 
             const formData = new FormData(item);
-            console.log('adasd');
+            if (item.getAttribute('data-calc') === 'end') {
+                for (let key in state) {
+                    formData.append(key, state[key]);
+                    console.log(key);
+                    console.log(state[key]);
+                }
+            }
+            
             postData('assets/server.php', formData)
                 .then(res => {
                     console.log(res);
@@ -53,7 +57,14 @@ const forms = () => {
                     clearInputs();
                     setTimeout(() => {
                         statusMessage.remove();
-                    }, 5000);
+
+                        document.querySelector(modalClose).style.display = 'none';
+                        document.body.style.overflow = '';
+                        for (let key in state) {
+                            delete state[key];
+                        }
+                        console.log(state);
+                    }, 3000);
                 });
         });
     });
