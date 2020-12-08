@@ -5,8 +5,8 @@ const gulp = require("gulp");
 const webpack = require("webpack-stream");
 const browsersync = require("browser-sync");
 
-// const dist = "./dist/"; //задаем переменную для папки в которую помещаем чистый проект
-const dist = 'C:/OpenServer/domains/localhost';
+const dist = "./dist/"; //задаем переменную для папки в которую помещаем чистый проект
+// const dist = 'C:/OpenServer/domains/localhost';
 
 gulp.task("copy-html", () => {                //task по отслеживанию изменения в html файле
     return gulp.src("./src/index.html")       //указываем путь к файлу который отслеживаем

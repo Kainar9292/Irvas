@@ -1,4 +1,19 @@
-let modalClose;
+
+
+const calcScroll = () => {
+    let div = document.createElement('div');
+
+    div.style.width = '50px';
+    div.style.height = '50px';
+    div.style.overflowY = 'scroll';
+    div.style.visibility = 'hidden';
+
+    document.body.appendChild(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+
+    return scrollWidth;
+};
 
 const modals = (state) => {
 
@@ -40,7 +55,8 @@ const modals = (state) => {
 
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
-
+                document.body.style.marginRight = `${scrollWindow}px`;
+                
                 modalClose = modalSelector;
                 
                 // document.body.classList.add('modal-open');
@@ -53,6 +69,7 @@ const modals = (state) => {
             });
             modal.style.display = 'none';
             document.body.style.overflow = '';
+            document.body.style.marginRight = `0px`;
             // document.body.classList.remove('modal-open');
         });
 
@@ -63,6 +80,7 @@ const modals = (state) => {
                 });
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
+                document.body.style.marginRight = `0px`;
                 // document.body.classList.remove('modal-open');
             }
         });
@@ -85,5 +103,8 @@ const modals = (state) => {
     // showModalByTime('.popup', 40000);
 };
 
-export {modalClose};
+const scrollWindow = calcScroll();
+let modalClose;
+
+export {modalClose, scrollWindow};
 export default modals;
