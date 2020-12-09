@@ -697,7 +697,6 @@ textarea:focus {
   line-height: 1.6;
 }
 
-
 /* Timer */
  .timer1 {
   padding: 10px;
@@ -706,12 +705,14 @@ textarea:focus {
   color: black;
   border-radius: 10px;
   text-align: center;
-  width: 360px;
+  max-width: 360px;
   height: 150px;
+
 }
 
 .container1 {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
 
 }
 .numbers1 {
@@ -719,7 +720,7 @@ textarea:focus {
   float: left;  
   color: white;
   font-size: 40px;
-  margin-right: 10px;
+  margin: 5px;
 }
 
 .timer1 span{
@@ -1316,6 +1317,10 @@ textarea:focus {
   .sale_subtitle {
     margin-bottom: 3rem;
     text-align: center;
+  }
+
+  .timer1 {
+    margin: 0 auto;
   }
 
   .contacts_info {
