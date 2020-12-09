@@ -26,10 +26,10 @@ const timer = (id, deedline) => {
 
     const setClock = (selector, endTime) => {
         const timer = document.querySelector(selector),
-              days = document.querySelector('#days'),
-              hours = document.querySelector('#hours'),
-              minutes = document.querySelector('#minutes'),
-              seconds = document.querySelector('#seconds'),
+              days = timer.querySelector('#days'),
+              hours = timer.querySelector('#hours'),
+              minutes = timer.querySelector('#minutes'),
+              seconds = timer.querySelector('#seconds'),
               timeInterval = setInterval(updateClock, 1000);
         
         updateClock();

@@ -88,8 +88,10 @@ const modals = (state) => {
 
     function showModalByTime(selector, time) {
         setTimeout((e) => {
-            const modal = document.querySelector(selector).style.display = 'block';
+            document.querySelector(selector).style.display = 'block';
+            console.log(selector);
             document.body.style.overflow = 'hidden';
+            document.body.style.marginRight = `${scrollWindow}px`;
         }, time);
     }
 
@@ -99,8 +101,7 @@ const modals = (state) => {
     bindModal('.popup_calc_button', '.popup_calc_profile', '.popup_calc_profile_close', 'height', 'width', false, true);
     bindModal('.popup_calc_profile_button', '.popup_calc_end', '.popup_calc_end_close', 'profile',
         'type', false, true);
-    // bindModal();
-    // showModalByTime('.popup', 40000);
+    showModalByTime('.popup_engineer', 4000);
 };
 
 const scrollWindow = calcScroll();
